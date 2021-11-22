@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Alert } from 'react-native';
+import { StyleSheet } from 'react-native';
 import View from './View';
 import AppBarTab from './AppBarTab';
 import Constants from 'expo-constants';
@@ -15,14 +15,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const onPress = () => Alert.alert("test");
-
 const AppBar = () => {
   return (
     <View style={styles.container} black>
-      <AppBarTab tabText="Repositories" onPress={onPress} />
-      <AppBarTab tabText="TODO" onPress={onPress} />
-      <AppBarTab tabText="TODO" onPress={onPress} />
+      <AppBarTab tabText="Repositories" to="/" />
+      <AppBarTab tabText="Sign In" to="/signin" />
+      <AppBarTab tabText="TODO" to="TODO" />
     </View>
   );
 };

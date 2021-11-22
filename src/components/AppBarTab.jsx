@@ -1,11 +1,31 @@
 import React from 'react';
-import { Pressable, Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
+import { Link } from 'react-router-native';
+import theme from '../theme';
 
-const AppBarTab = ({ tabText, onPress }) => {
+const AppBarTab = ({ tabText, to }) => {
+    const [pressed, setPressed] = React.useState(false);
+
+    // https://stackoverflow.com/a/34637687
+    const styles = StyleSheet.create({
+        link: {
+            color: pressed ? theme.twitterColors.blue : "white",
+            fontSize: 18,
+            fontWeight: "500",
+            textAlign: "center"
+        }
+    });
+
     return (
-        <Pressable style={{ flexGrow: 1, flexBasis: 1 }} onPress={onPress}>
-            <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>{tabText}</Text>
-        </Pressable>
+        <Link
+            onHideUnderlay={() => setPressed(false)}
+            onShowUnderlay={() => setPressed(true)}
+            underlayColor={null}
+            style={{ paddingRight: 20 }}
+            to={to}
+        >
+            <Text style={styles.link} >{tabText}</Text>
+        </Link>
     );
 };
 
