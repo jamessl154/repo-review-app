@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
         color: theme.twitterColors.black
     },
     icon: {
-        width: 80,
-        height: 80,
+        width: 60,
+        height: 60,
         borderRadius: 10,
     },
     language: {
