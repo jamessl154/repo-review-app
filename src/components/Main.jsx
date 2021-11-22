@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 const Main = () => {
   return (
-    <View style={styles.container} blue>
+    <View style={styles.container} lightGrey>
       <AppBar />
       <RepositoryList />
     </View>
