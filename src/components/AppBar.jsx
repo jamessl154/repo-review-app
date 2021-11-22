@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, Pressable, Alert, Text } from 'react-native';
 import View from './View';
+import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    height: 35,
+    height: 58,
     paddingLeft: 5,
-    paddingRight: 5
+    paddingRight: 5,
+    paddingTop: Constants.statusBarHeight,
   },
 });
 
