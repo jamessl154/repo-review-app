@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Pressable, Alert, Text } from 'react-native';
+import { StyleSheet, Alert } from 'react-native';
 import View from './View';
+import AppBarTab from './AppBarTab';
 import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
@@ -18,17 +19,11 @@ const onPress = () => Alert.alert("test");
 
 const AppBar = () => {
   return (
-  <View style={styles.container} black>
-      <Pressable style={{ flexGrow: 1, flexBasis: 1 }} onPress={onPress}>
-          <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>Repositories</Text>
-      </Pressable>
-      <Pressable style={{ flexGrow: 1, flexBasis: 1 }} onPress={onPress}>
-          <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>TODO</Text>
-      </Pressable>
-      <Pressable style={{ flexGrow: 1, flexBasis: 1 }} onPress={onPress}>
-          <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>TODO</Text>
-      </Pressable>
-  </View>
+    <View style={styles.container} black>
+      <AppBarTab tabText="Repositories" onPress={onPress} />
+      <AppBarTab tabText="TODO" onPress={onPress} />
+      <AppBarTab tabText="TODO" onPress={onPress} />
+    </View>
   );
 };
 
