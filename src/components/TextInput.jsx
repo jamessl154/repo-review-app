@@ -7,11 +7,10 @@ const styles = StyleSheet.create({
     borderColor: "#d73a4a"
   },
   input: {
-    borderWidth: 1,
     borderRadius: 5,
-    borderColor: theme.twitterColors.black,
     padding: 7,
-    fontSize: 17
+    fontSize: 17,
+    backgroundColor: theme.twitterColors.white
   }
 });
 
