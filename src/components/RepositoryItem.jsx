@@ -7,8 +7,7 @@ import ItemBody from "./itemComponents/ItemBody";
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-        borderRadius: 6,
-        borderWidth: 1
+        borderRadius: 6
     }
 });
 
