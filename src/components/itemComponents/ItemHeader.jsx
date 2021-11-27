@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         // https://stackoverflow.com/a/57462018
         flexShrink: 1,
-        height: 110
+        height: 150
     },
     title: {
         fontSize: 20,
