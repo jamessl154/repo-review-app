@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet } from 'react-native';
-import View from './View';
-import ItemHeader from "./itemComponents/ItemHeader";
-import ItemBody from "./itemComponents/ItemBody";
+import View from '../View';
+import ItemHeader from "./ItemHeader";
+import ItemBody from "./ItemBody";
 
 const styles = StyleSheet.create({
     container: {

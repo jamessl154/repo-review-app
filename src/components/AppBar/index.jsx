@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Platform } from 'react-native';
-import View from './View';
+import View from '../View';
 import AppBarTab from './AppBarTab';
 import Constants from 'expo-constants';
 
