@@ -17,7 +17,7 @@ const RepositoryItem = ({ item }) => {
         <View style={styles.container} white>
             <ItemHeader
                 ownerAvatarUrl={item.ownerAvatarUrl}
-                fullName={item.fullName}
+                fullName={`${item.name}/${item.ownerName}`}
                 language={item.language}
                 description={item.description}
             />
