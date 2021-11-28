@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Constants from 'expo-constants';
 
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
@@ -7,7 +8,7 @@ const useRepositories = () => {
   const fetchRepositories = async () => {
     setLoading(true);
 
-    const response = await fetch('http://192.168.1.126:5000/api/repositories');
+    const response = await fetch(Constants.manifest.extra.REST_URI);
     const json = await response.json();
 
     setLoading(false);
