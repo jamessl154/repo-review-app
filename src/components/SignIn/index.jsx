@@ -48,14 +48,8 @@ const initialValues = {
 const SignIn = () => {
   const [signIn] = useSignIn();
 
-  const onSubmit = async (values) => {
-    const { username, password } = values;
-
-    try {
-      signIn({ username, password });
-    } catch (e) {
-      console.log(e);
-    }
+  const onSubmit = ({ username, password }) => {
+    signIn({ username, password });
   };
 
   return (
