@@ -45,8 +45,7 @@ const initialValues = {
   password: ""
 };
 
-const SignIn = () => {
-  const [signIn] = useSignIn();
+export const SignInContainer = ({ signIn }) => {
 
   const onSubmit = ({ username, password }) => {
     signIn({ username, password });
@@ -64,13 +63,15 @@ const SignIn = () => {
             <FormikTextInput
               name="username"
               placeholder="Username"
+              testID="usernameField"
             />
             <FormikTextInput
               name="password"
               placeholder="Password"
+              testID="passwordField"
               secureTextEntry
             />
-            <Pressable style={styles.pressable} onPress={handleSubmit}>
+            <Pressable testID="submitButton" style={styles.pressable} onPress={handleSubmit}>
               <Text style={styles.button}>Sign In</Text>
             </Pressable>
           </View>
@@ -78,6 +79,12 @@ const SignIn = () => {
       }}
     </Formik>
   );
+};
+
+const SignIn = () => {
+  const [signIn] = useSignIn();
+
+  return <SignInContainer signIn={signIn} />;
 };
 
 export default SignIn;
