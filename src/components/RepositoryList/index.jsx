@@ -1,12 +1,7 @@
 import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
-// import useRepositories from '../hooks/useRepositories';
-// useRepositories implements the same functionality with REST
-
-// now GraphQL
-import { useQuery } from '@apollo/client';
-import { GET_REPOSITORIES } from '../../graphql/queries';
+import useRepositories from '../../hooks/useRepositories';
 
 const styles = StyleSheet.create({
   separator: {
@@ -20,15 +15,10 @@ const renderItem = ({ item }) => {
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryList = () => {
-  // const { repositories } = useRepositories();
+const RepositoryListContainer = ({ repositories }) => {
 
-  const { data } = useQuery(GET_REPOSITORIES, {
-    fetchPolicy: 'cache-and-network',
-  });
-  
-  const repositoryNodes = (data && data.repositories)
-    ? data.repositories.edges.map(edge => edge.node)
+  const repositoryNodes = repositories
+    ? repositories.edges.map(edge => edge.node)
     : [];
 
   return (
@@ -39,6 +29,13 @@ const RepositoryList = () => {
       keyExtractor={(item) => item.name}
     />
   );
+};
+
+// Removed all side effects from the container for testing
+const RepositoryList = () => {
+  const { repositories } = useRepositories();
+
+  return <RepositoryListContainer repositories={repositories} />;
 };
 
 export default RepositoryList;
