@@ -15,7 +15,7 @@ const renderItem = ({ item }) => {
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories }) => {
 
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -26,7 +26,7 @@ const RepositoryListContainer = ({ repositories }) => {
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={renderItem}
-      keyExtractor={(item) => item.name}
+      keyExtractor={(item) => item.fullName}
     />
   );
 };

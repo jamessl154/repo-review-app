@@ -13,19 +13,19 @@ const ItemBody = ({ forksCount, stargazersCount, ratingAverage, reviewCount }) =
     return (
         <View style= {{ flexDirection: "row", justifyContent: "space-evenly"}}>
             <View flexColumn>
-                <Text repoItemValue>{toThousands(forksCount)}</Text>
+                <Text testID='forks' repoItemValue>{toThousands(forksCount)}</Text>
                 <Text repoItemLabel>Forks</Text>
             </View>
             <View flexColumn>
-                <Text repoItemValue>{toThousands(stargazersCount)}</Text>
+                <Text testID='stars' repoItemValue>{toThousands(stargazersCount)}</Text>
                 <Text repoItemLabel>Stars</Text>
             </View>
             <View flexColumn>
-                <Text repoItemValue>{toThousands(ratingAverage)}</Text>
+                <Text testID='rating' repoItemValue>{toThousands(ratingAverage)}</Text>
                 <Text repoItemLabel>Rating</Text>
             </View>
             <View flexColumn>
-                <Text repoItemValue>{toThousands(reviewCount)}</Text>
+                <Text testID='reviews' repoItemValue>{toThousands(reviewCount)}</Text>
                 <Text repoItemLabel>Reviews</Text>
             </View>
         </View>

@@ -37,10 +37,10 @@ const ItemHeader = ({ ownerAvatarUrl, fullName, language, description }) => {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Image style={styles.icon} source={{ uri: ownerAvatarUrl }}/>
             <View style={styles.header}>
-                <Text style={styles.title}>{fullName}</Text>
-                <Text style={{ color: theme.twitterColors.darkGrey, fontSize: 15 }}>{description}</Text>
+                <Text style={styles.title} testID="fullName" >{fullName}</Text>
+                <Text style={{ color: theme.twitterColors.darkGrey, fontSize: 15 }} testID="description" >{description}</Text>
                 <View style={styles.language}>
-                    <Text style={{ color: "white" }}>{language}</Text>
+                    <Text style={{ color: "white" }} testID="language" >{language}</Text>
                 </View>
             </View>
         </View>
