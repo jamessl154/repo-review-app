@@ -3,6 +3,8 @@ import { ScrollView, StyleSheet, Platform } from 'react-native';
 import View from '../View';
 import AppBarTab from './AppBarTab';
 import Constants from 'expo-constants';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../../graphql/queries';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,15 +18,21 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  return (
-    <View style={styles.container} black>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <AppBarTab tabText="Repositories" to="/" />
-        <AppBarTab tabText="Sign In" to="/signin" />
-        <AppBarTab tabText="TODO" to="TODO" />
-      </ScrollView>
-    </View>
-  );
+  const { data, loading } = useQuery(GET_USER);
+
+  if (!loading) {
+    return (
+      <View style={styles.container} black>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <AppBarTab tabText="Repositories" to="/" />
+          {data && data.authorizedUser
+            ? <AppBarTab tabText="Sign Out" to="/signout" />
+            : <AppBarTab tabText="Sign In" to="/signin" />
+          }
+        </ScrollView>
+      </View>
+    );
+  } else return null;
 };
 
 export default AppBar;

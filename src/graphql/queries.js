@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_REPOSITORIES = gql`
-    query {
+    query getRepositories {
         repositories {
             edges {
                 node {
@@ -16,6 +16,15 @@ export const GET_REPOSITORIES = gql`
                     reviewCount
                 }
             }
+        }
+    }
+`;
+
+export const GET_USER = gql`
+    query getUser {
+        authorizedUser {
+            id
+            username
         }
     }
 `;
