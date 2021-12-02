@@ -1,11 +1,12 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { StyleSheet } from 'react-native';
+import * as yup from 'yup';
+
 import View from '../View';
 import Text from '../Text';
 import FormikTextInput from '../FormikTextInput';
-import theme from '../../theme';
-import { Pressable, StyleSheet } from 'react-native';
-import * as yup from 'yup';
+import Pressable from '../Pressable';
 import useSignIn from '../../hooks/useSignIn';
 
 const styles = StyleSheet.create({
@@ -14,16 +15,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: "space-evenly",
     height: 200
-  },
-  pressable: {
-    backgroundColor: theme.twitterColors.blue,
-    borderRadius: 5,
-  },
-  button: {
-    padding: 7,
-    fontSize: 17,
-    color: theme.twitterColors.white,
-    textAlign: "center"
   }
 });
 
@@ -71,8 +62,8 @@ export const SignInContainer = ({ signIn }) => {
               testID="passwordField"
               secureTextEntry
             />
-            <Pressable testID="submitButton" style={styles.pressable} onPress={handleSubmit}>
-              <Text style={styles.button}>Sign In</Text>
+            <Pressable testID="submitButton" button onPress={handleSubmit}>
+              <Text button>Sign In</Text>
             </Pressable>
           </View>
         );

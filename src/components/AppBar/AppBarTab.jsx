@@ -1,15 +1,19 @@
 import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import Text from '../Text';
 import { Link } from 'react-router-native';
+import { useApolloClient } from '@apollo/client';
+import { useHistory } from 'react-router-native';
+
+import Text from '../Text';
 import theme from '../../theme';
 import useAuthStorage from '../../hooks/useAuthStorage';
-import { useApolloClient } from '@apollo/client';
 
 const AppBarTab = ({ tabText, to }) => {
     const [pressed, setPressed] = React.useState(false);
     const authStorage = useAuthStorage();
     const apolloClient = useApolloClient();
+    const history = useHistory();
+
     // https://stackoverflow.com/a/34637687
     const styles = StyleSheet.create({
         link: {
@@ -24,6 +28,7 @@ const AppBarTab = ({ tabText, to }) => {
         try {
             await authStorage.removeAccessToken();
             apolloClient.resetStore();
+            history.push("/");
         } catch (e) {
             console.log(e.message);
         }

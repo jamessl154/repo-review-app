@@ -7,6 +7,8 @@ import { RepositoryItemContainer } from '../RepositoryList/RepositoryItem';
 import { GET_SINGLE_REPO } from '../../graphql/queries';
 import View from '../View';
 import Text from "../Text";
+import Pressable from '../Pressable';
+import toThousands from "../../utils/toThousands";
 
 const SingleRepository = () => {
     const { id } = useParams();
@@ -14,7 +16,17 @@ const SingleRepository = () => {
 
     const styles = StyleSheet.create({
         container: {
-            padding: 10,
+            backgroundColor: "white",
+            paddingHorizontal: 15,
+            paddingBottom: 15
+        },
+        row: {
+            paddingBottom: 15,
+            flexDirection: "row",
+            justifyContent: "center"
+        },
+        unit: {
+            width: 60,
         }
     });
 
@@ -22,8 +34,20 @@ const SingleRepository = () => {
         return (
             <>
                 <RepositoryItemContainer item={data.repository} styles={styles} />
-                <View style={{ height: 500, width: 500, backgroundColor: "white" }}>
-                    <Text>Test 123</Text>
+                <View style={styles.container}>
+                    <View style={styles.row}>
+                        <View style={styles.unit} flexColumn>
+                            <Text repoItemValue>{toThousands(data.repository.watchersCount)}</Text>
+                            <Text repoItemLabel>Watchers</Text>
+                        </View>
+                        <View style={styles.unit} flexColumn>
+                            <Text repoItemValue>{toThousands(data.repository.openIssuesCount)}</Text>
+                            <Text repoItemLabel>Issues</Text>
+                        </View>
+                    </View>
+                    <Pressable button>
+                        <Text button>Open in GitHub</Text>
+                    </Pressable>
                 </View>
             </>
         );
