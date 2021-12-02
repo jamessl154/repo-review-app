@@ -1,12 +1,16 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-// import { useApolloClient } from "@apollo/client";
+import { useParams } from "react-router-native";
+import { useQuery } from "@apollo/client";
 
 import { RepositoryItemContainer } from '../RepositoryList/RepositoryItem';
-// import View from '../View';
+import { GET_SINGLE_REPO } from '../../graphql/queries';
+import View from '../View';
+import Text from "../Text";
 
 const SingleRepository = () => {
-    // const apolloClient = useApolloClient();
+    const { id } = useParams();
+    const { data } = useQuery(GET_SINGLE_REPO, { variables: { id } });
 
     const styles = StyleSheet.create({
         container: {
@@ -14,24 +18,16 @@ const SingleRepository = () => {
         }
     });
 
-    const item = {
-        "description": "Predictable state container for JavaScript apps",
-        "forksCount": 14971,
-        "fullName": "reduxjs/redux",
-        "id": "reduxjs.redux",
-        "language": "TypeScript",
-        "ownerAvatarUrl": "https://avatars.githubusercontent.com/u/13142323?v=4",    
-        "ratingAverage": 0,
-        "reviewCount": 0,
-        "stargazersCount": 57097,
-        "url": "https://github.com/reduxjs/redux",
-    };
-
-    if (!item) return null;
-
-    return (
-        <RepositoryItemContainer item={item} styles={styles} />
-    );
+    if (data && data.repository) {
+        return (
+            <>
+                <RepositoryItemContainer item={data.repository} styles={styles} />
+                <View style={{ height: 500, width: 500, backgroundColor: "white" }}>
+                    <Text>Test 123</Text>
+                </View>
+            </>
+        );
+    } else return null;
 };
 
 export default SingleRepository;
