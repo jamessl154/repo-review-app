@@ -24,30 +24,25 @@ export const GET_SINGLE_REPO = gql`
             createdAt
             watchersCount
             openIssuesCount
+            reviews {
+                edges {
+                    node {
+                        id
+                        rating
+                        createdAt
+                        text
+                        user {
+                            id
+                            username
+                        }
+                    }
+                }
+            }
         }
     }
 
     ${REPOSITORY_BASE_FIELDS}
 `;
-
-// url
-// createdAt
-// watchersCount
-// openIssuesCount
-// reviews {
-//     edges {
-//         node {
-//             id
-//             user {
-//                 id
-//                 username
-//             }
-//             rating
-//             createdAt
-//             text
-//         }
-//     }
-// }
 
 export const GET_USER = gql`
     query getUser {
