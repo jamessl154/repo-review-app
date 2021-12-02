@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
+import { Route, Switch } from 'react-router-native';
+
 import View from './View';
 import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
-import { Route, Switch } from 'react-router-native';
 import SignIn from './SignIn';
+import SingleRepository from './SingleRepository';
 
 StatusBar.setBarStyle('light-content', true);
 
@@ -25,6 +27,9 @@ const Main = () => {
         </Route>
         <Route path="/signin" exact>
           <SignIn />
+        </Route>
+        <Route path="/repos/:id" exact>
+          <SingleRepository />
         </Route>
       </Switch>
     </View>

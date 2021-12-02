@@ -5,6 +5,7 @@ export const GET_REPOSITORIES = gql`
         repositories {
             edges {
                 node {
+                    id
                     fullName
                     ownerAvatarUrl
                     description
@@ -18,6 +19,25 @@ export const GET_REPOSITORIES = gql`
         }
     }
 `;
+
+// url
+// createdAt
+// watchersCount
+// openIssuesCount
+// reviews {
+//     edges {
+//         node {
+//             id
+//             user {
+//                 id
+//                 username
+//             }
+//             rating
+//             createdAt
+//             text
+//         }
+//     }
+// }
 
 export const GET_USER = gql`
     query getUser {

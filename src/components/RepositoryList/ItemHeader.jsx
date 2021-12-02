@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     language: {
-        backgroundColor:
-        theme.twitterColors.blue,
+        backgroundColor: theme.twitterColors.blue,
         borderRadius: 5,
         marginRight: "auto",
         padding: 3

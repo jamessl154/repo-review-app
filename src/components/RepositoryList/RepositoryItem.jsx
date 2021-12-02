@@ -3,31 +3,48 @@ import { StyleSheet } from 'react-native';
 import View from '../View';
 import ItemHeader from "./ItemHeader";
 import ItemBody from "./ItemBody";
+import { Link } from "react-router-native";
+import theme from "../../theme";
 
-const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-        borderRadius: 6
-    }
-});
-
-const RepositoryItem = ({ item }) => {
+export const RepositoryItemContainer = ({ item, styles }) => {
 
     return (
-        <View style={styles.container} testID="repoItem" white>
-            <ItemHeader
-                ownerAvatarUrl={item.ownerAvatarUrl}
-                fullName={item.fullName}
-                language={item.language}
-                description={item.description}
-            />
-            <ItemBody
-                forksCount={item.forksCount}
-                stargazersCount={item.stargazersCount}
-                ratingAverage={item.ratingAverage}
-                reviewCount={item.reviewCount}
-            />
-        </View>
+            <View style={styles.container} testID="repoItem" white>
+                <ItemHeader
+                    ownerAvatarUrl={item.ownerAvatarUrl}
+                    fullName={item.fullName}
+                    language={item.language}
+                    description={item.description}
+                />
+                <ItemBody
+                    forksCount={item.forksCount}
+                    stargazersCount={item.stargazersCount}
+                    ratingAverage={item.ratingAverage}
+                    reviewCount={item.reviewCount}
+                />
+            </View>
+    );
+};
+
+const RepositoryItem = ({ item }) => {
+    const [pressed, setPressed] = React.useState(false);
+
+    const styles = StyleSheet.create({
+        container: {
+            padding: 10,
+            backgroundColor: pressed ? theme.twitterColors.blue : "white"
+        }
+    });
+
+    return (
+        <Link
+            to={`repos/${item.id}`}
+            onHideUnderlay={() => setPressed(false)}
+            onShowUnderlay={() => setPressed(true)}
+            underlayColor={null}
+        >
+            <RepositoryItemContainer item={item} styles={styles} />
+        </Link>
     );
 };
 
