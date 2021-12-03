@@ -26,12 +26,16 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 16,
-        fontWeight: "700"
+        fontWeight: "700",
+        marginBottom: 2
     },
     text: {
         flexShrink: 1,
         height: 160,
-        justifyContent: "space-around"
+        justifyContent: "flex-start"
+    },
+    subText: {
+        marginBottom: 6
     }
 });
 
@@ -52,10 +56,10 @@ const ReviewItem = ({ review }) => {
                 <Text black style={styles.title}>
                     {review.user.username}
                 </Text>
-                <Text darkGrey>
+                <Text darkGrey style={styles.subText}>
                     {formattedDate}
                 </Text>
-                <Text black>
+                <Text black style={styles.subText}>
                     {review.text}
                 </Text>
             </View>
