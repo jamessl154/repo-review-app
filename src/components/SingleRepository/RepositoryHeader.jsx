@@ -7,6 +7,7 @@ import View from '../View';
 import Text from "../Text";
 import Pressable from '../Pressable';
 import toThousands from "../../utils/toThousands";
+import theme from "../../theme";
 
 const RepositoryHeader = ({ repository }) => {
 
@@ -26,10 +27,10 @@ const RepositoryHeader = ({ repository }) => {
         }
     });
 
-    const handlePress = () => WebBrowser.openBrowserAsync(repository.url);
+    const githubRedirect = () => WebBrowser.openBrowserAsync(repository.url);
 
     return (
-        <>
+        <View style={{ paddingBottom: 10 }}>
             <RepositoryItemContainer item={repository} styles={styles} />
             <View style={styles.container}>
                 <View style={styles.row}>
@@ -42,11 +43,25 @@ const RepositoryHeader = ({ repository }) => {
                         <Text repoItemLabel>Issues</Text>
                     </View>
                 </View>
-                <Pressable onPress={handlePress} button>
-                    <Text button>Open in GitHub</Text>
+                <Pressable
+                    mainBlueButton={"white"}
+                    onPress={githubRedirect}
+                >
+                    {({ pressed }) => (
+                        <Text
+                            button
+                            style={{
+                                color: pressed
+                                ? theme.twitterColors.blue
+                                : theme.twitterColors.white
+                            }}
+                        >
+                            Open in GitHub
+                        </Text>
+                    )}
                 </Pressable>
             </View>
-        </>
+        </View>
     );
 };
 

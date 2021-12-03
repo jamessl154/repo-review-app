@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
+
 import View from '../View';
 import Text from '../Text';
-import theme from '../../theme';
 
 const styles = StyleSheet.create({
     header: {
@@ -15,8 +15,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        fontWeight: "700",
-        color: theme.twitterColors.black
+        fontWeight: "700"
     },
     icon: {
         width: 60,
@@ -24,7 +23,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     language: {
-        backgroundColor: theme.twitterColors.black,
         borderRadius: 5,
         marginRight: "auto",
         padding: 3
@@ -36,10 +34,16 @@ const ItemHeader = ({ ownerAvatarUrl, fullName, language, description }) => {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Image style={styles.icon} source={{ uri: ownerAvatarUrl }}/>
             <View style={styles.header}>
-                <Text style={styles.title} testID="fullName" >{fullName}</Text>
-                <Text style={{ color: theme.twitterColors.darkGrey, fontSize: 15 }} testID="description" >{description}</Text>
-                <View style={styles.language}>
-                    <Text style={{ color: "white" }} testID="language" >{language}</Text>
+                <Text black style={styles.title} testID="fullName" >
+                    {fullName}
+                </Text>
+                <Text style={{ fontSize: 15 }} darkGrey testID="description" >
+                    {description}
+                </Text>
+                <View black style={styles.language}>
+                    <Text white testID="language" >
+                        {language}
+                    </Text>
                 </View>
             </View>
         </View>

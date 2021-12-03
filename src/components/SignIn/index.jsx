@@ -7,6 +7,7 @@ import View from '../View';
 import Text from '../Text';
 import FormikTextInput from '../FormikTextInput';
 import Pressable from '../Pressable';
+import theme from '../../theme';
 import useSignIn from '../../hooks/useSignIn';
 
 const styles = StyleSheet.create({
@@ -62,8 +63,23 @@ export const SignInContainer = ({ signIn }) => {
               testID="passwordField"
               secureTextEntry
             />
-            <Pressable testID="submitButton" button onPress={handleSubmit}>
-              <Text button>Sign In</Text>
+            <Pressable
+              mainBlueButton={theme.twitterColors.lightGrey}
+              onPress={handleSubmit}
+              testID="submitButton"
+            >
+              {({ pressed }) => (
+                <Text
+                  button
+                  style={{
+                    color: pressed
+                      ? theme.twitterColors.blue
+                      : theme.twitterColors.white
+                  }}
+                >
+                  Sign In
+                </Text>
+              )}
             </Pressable>
           </View>
         );

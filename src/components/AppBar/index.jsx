@@ -1,9 +1,10 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Platform } from 'react-native';
-import View from '../View';
-import AppBarTab from './AppBarTab';
 import Constants from 'expo-constants';
 import { useQuery } from '@apollo/client';
+
+import View from '../View';
+import AppBarTab from './AppBarTab';
 import { GET_USER } from '../../graphql/queries';
 
 const styles = StyleSheet.create({

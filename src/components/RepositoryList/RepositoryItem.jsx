@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet } from 'react-native';
+import { Link } from "react-router-native";
+
 import View from '../View';
 import ItemHeader from "./ItemHeader";
 import ItemBody from "./ItemBody";
-import { Link } from "react-router-native";
 import theme from "../../theme";
 
 export const RepositoryItemContainer = ({ item, styles }) => {

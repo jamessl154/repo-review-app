@@ -1,5 +1,6 @@
 import React from 'react';
 import { View as NativeView, StyleSheet } from 'react-native';
+
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -23,10 +24,13 @@ const styles = StyleSheet.create({
     },
     flexColumn: {
         flexDirection: "column"
+    },
+    flexRow: {
+        flexDirection: "row"
     }
 });
 
-const View = ({ blue, black, darkGrey, midGrey, lightGrey, white, flexColumn, style, ...props }) => {
+const View = ({ blue, black, darkGrey, midGrey, lightGrey, white, flexColumn, flexRow, style, ...props }) => {
 
     const viewStyle = [
         blue && styles.blue,
@@ -36,6 +40,7 @@ const View = ({ blue, black, darkGrey, midGrey, lightGrey, white, flexColumn, st
         lightGrey && styles.lightGrey,
         white && styles.white,
         flexColumn && styles.flexColumn,
+        flexRow && styles.flexRow,
         style
     ];
 
