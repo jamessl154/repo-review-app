@@ -40,8 +40,8 @@ const initialValues = {
 
 export const SignInContainer = ({ signIn }) => {
 
-  const onSubmit = ({ username, password }) => {
-    signIn({ username, password });
+  const onSubmit = (loginDetails) => {
+    signIn(loginDetails);
   };
 
   return (
