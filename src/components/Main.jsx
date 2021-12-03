@@ -7,6 +7,7 @@ import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import SingleRepository from './SingleRepository';
+import CreateReview from './CreateReview';
 
 StatusBar.setBarStyle('light-content', true);
 
@@ -30,6 +31,9 @@ const Main = () => {
         </Route>
         <Route path="/repos/:id" exact>
           <SingleRepository />
+        </Route>
+        <Route path="/createReview" exact>
+          <CreateReview />
         </Route>
       </Switch>
     </View>

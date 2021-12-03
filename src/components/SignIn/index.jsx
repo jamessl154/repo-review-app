@@ -14,8 +14,9 @@ const styles = StyleSheet.create({
   form: {
     padding: 15,
     flexDirection: 'column',
-    justifyContent: "space-evenly",
-    height: 200
+    justifyContent: "flex-start",
+    flexGrow: 1,
+    flexShrink: 1
   }
 });
 
