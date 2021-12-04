@@ -27,7 +27,8 @@ const Pressable = ({ mainBlueButton, button, style, ...props }) => {
                             ? mainBlueButton
                             : theme.twitterColors.blue,
                         borderRadius: 5
-                    }
+                    },
+                    pressableStyle
                 ]}
                 {...props}
             />

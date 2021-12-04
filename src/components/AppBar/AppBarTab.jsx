@@ -18,7 +18,7 @@ const AppBarTab = ({ tabText, to }) => {
     const styles = StyleSheet.create({
         link: {
             color: pressed ? theme.twitterColors.blue : "white",
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: "500",
             textAlign: "center"
         }

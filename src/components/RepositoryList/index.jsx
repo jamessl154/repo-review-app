@@ -3,6 +3,7 @@ import { FlatList, View, StyleSheet } from 'react-native';
 
 import RepositoryItem from './RepositoryItem';
 import useRepositories from '../../hooks/useRepositories';
+import OrderBy from './OrderBy';
 
 const styles = StyleSheet.create({
   separator: {
@@ -28,6 +29,7 @@ export const RepositoryListContainer = ({ repositories }) => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
+      ListHeaderComponent={() => <OrderBy />}
     />
   );
 };

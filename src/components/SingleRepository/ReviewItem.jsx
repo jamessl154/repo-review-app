@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
     text: {
         flexShrink: 1,
-        height: 160,
+        flexGrow: 1,
         justifyContent: "flex-start"
     },
     subText: {
