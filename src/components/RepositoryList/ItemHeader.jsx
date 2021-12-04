@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         // https://stackoverflow.com/a/57462018
         flexShrink: 1,
-        height: 150
+        height: 150,
+        paddingTop: 10
     },
     title: {
         fontSize: 20,
@@ -26,18 +27,25 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginRight: "auto",
         padding: 3
+    },
+    description: {
+        fontSize: 15
+    },
+    container: {
+        alignItems: "center",
+        marginBottom: 30
     }
 });
 
 const ItemHeader = ({ ownerAvatarUrl, fullName, language, description }) => {
     return (
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={styles.container} flexRow>
             <Image style={styles.icon} source={{ uri: ownerAvatarUrl }}/>
             <View style={styles.header}>
                 <Text black style={styles.title} testID="fullName" >
                     {fullName}
                 </Text>
-                <Text style={{ fontSize: 15 }} darkGrey testID="description" >
+                <Text style={styles.description} darkGrey testID="description" >
                     {description}
                 </Text>
                 <View black style={styles.language}>
