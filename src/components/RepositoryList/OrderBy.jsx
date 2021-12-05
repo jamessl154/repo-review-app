@@ -10,7 +10,7 @@ import theme from "../../theme";
 const styles = StyleSheet.create({
     buttonTitle: {
         fontSize: 20,
-        fontWeight: "500",
+        fontWeight: "700",
         padding: 10,
         textAlign: "center"
     },
@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
     }
 });
 
-const OrderBy = ({ refetch, orderBy, setOrderBy }) => {
+const OrderBy = ({ refetch }) => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [orderBy, setOrderBy] = useState("Latest");
 
     const orderChoices = ["Highest Rated", "Lowest Rated", "Latest"];
 
