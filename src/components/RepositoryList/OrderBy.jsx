@@ -37,12 +37,12 @@ const styles = StyleSheet.create({
     }
 });
 
-const OrderBy = () => {
+const OrderBy = ({ refetch, orderBy, setOrderBy }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [orderBy, setOrderBy] = useState("Latest");
 
     const orderChoices = ["Highest Rated", "Lowest Rated", "Latest"];
 
+    // https://reactnative.dev/docs/modal
     return (
         <View>
             <Modal
@@ -59,6 +59,11 @@ const OrderBy = () => {
                                 onPress={() => {
                                     setModalVisible(!modalVisible);
                                     setOrderBy(orderType);
+                                    // https://www.apollographql.com/docs/react/data/queries/#refetching
+                                    refetch({
+                                        orderBy: orderType.includes("Rated") ? "RATING_AVERAGE" : "CREATED_AT",
+                                        orderDirection: orderType.includes("Lowest") ? "ASC" : "DESC"
+                                    });
                                 }}
                             >
                                 {({ pressed }) => (

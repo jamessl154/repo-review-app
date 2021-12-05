@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 
 import RepositoryItem from './RepositoryItem';
@@ -17,7 +17,9 @@ const renderItem = ({ item }) => {
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, refetch }) => {
+  // lifting up state so that it is maintained when the refetch unmounts ListHeaderComponent
+  const [orderBy, setOrderBy] = useState("Latest");
 
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -29,16 +31,21 @@ export const RepositoryListContainer = ({ repositories }) => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
-      ListHeaderComponent={() => <OrderBy />}
+      ListHeaderComponent={() =>
+        <OrderBy
+          refetch={refetch}
+          orderBy={orderBy}
+          setOrderBy={setOrderBy}
+        />}
     />
   );
 };
 
 // Removed all side effects from the container for testing
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const { repositories, refetch } = useRepositories();
 
-  return <RepositoryListContainer repositories={repositories} />;
+  return <RepositoryListContainer refetch={refetch} repositories={repositories} />;
 };
 
 export default RepositoryList;
