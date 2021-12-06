@@ -50,7 +50,7 @@ const SingleRepository = () => {
         return (
             <FlatList
                 data={reviewNodes}
-                renderItem={({ item }) => <ReviewItem review={item} />}
+                renderItem={({ item }) => <ReviewItem review={item} title={item.user.username} />}
                 keyExtractor={({ id }) => id}
                 ItemSeparatorComponent={ItemSeparator}
                 ListHeaderComponent={() => <RepositoryHeader repository={repository} />}

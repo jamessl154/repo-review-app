@@ -5,7 +5,9 @@ const theme = {
     darkGrey: "#66757F",
     midGrey: "#CCD6DD",
     lightGrey: "#E1E8ED",
-    white: "#FFFFFF"
+    white: "#FFFFFF",
+    // same light and saturation as the blue theme
+    red: "#ee5353"
   }
 };
   

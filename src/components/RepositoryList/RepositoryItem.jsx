@@ -7,6 +7,7 @@ import ItemHeader from "./ItemHeader";
 import ItemBody from "./ItemBody";
 import theme from "../../theme";
 
+// container component free of side effects can be and is reused
 export const RepositoryItemContainer = ({ item, styles }) => {
 
     return (

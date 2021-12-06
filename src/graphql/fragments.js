@@ -13,3 +13,16 @@ export const REPOSITORY_BASE_FIELDS = gql`
     reviewCount
   }
 `;
+
+export const REVIEW_BASE_FIELDS = gql`
+  fragment reviewBaseFields on Review {
+    id
+    rating
+    createdAt
+    text
+    user {
+      id
+      username
+    }
+  }
+`;

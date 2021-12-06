@@ -9,6 +9,7 @@ import SignIn from './SignIn';
 import SingleRepository from './SingleRepository';
 import CreateReview from './CreateReview';
 import SignUp from './SignUp';
+import MyReviews from './MyReviews';
 
 StatusBar.setBarStyle('light-content', true);
 
@@ -33,11 +34,14 @@ const Main = () => {
         <Route path="/repos/:id" exact>
           <SingleRepository />
         </Route>
-        <Route path="/createReview" exact>
+        <Route path="/create-review" exact>
           <CreateReview />
         </Route>
         <Route path="/signup" exact>
           <SignUp />
+        </Route>
+        <Route path="/my-reviews">
+          <MyReviews />
         </Route>
       </Switch>
     </View>

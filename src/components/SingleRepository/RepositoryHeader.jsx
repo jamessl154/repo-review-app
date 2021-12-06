@@ -1,8 +1,8 @@
 import React from "react";
-import { RepositoryItemContainer } from '../RepositoryList/RepositoryItem';
 import { StyleSheet } from "react-native";
 import * as WebBrowser from 'expo-web-browser';
 
+import { RepositoryItemContainer } from '../RepositoryList/RepositoryItem';
 import View from '../View';
 import Text from "../Text";
 import Pressable from '../Pressable';

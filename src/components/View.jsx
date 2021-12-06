@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
     white: {
         backgroundColor: theme.twitterColors.white,
     },
+    red: {
+        backgroundColor: "#ee5353",
+    },
     flexColumn: {
         flexDirection: "column"
     },
@@ -30,7 +33,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const View = ({ blue, black, darkGrey, midGrey, lightGrey, white, flexColumn, flexRow, style, ...props }) => {
+const View = ({ blue, black, red, darkGrey, midGrey, lightGrey, white, flexColumn, flexRow, style, ...props }) => {
 
     const viewStyle = [
         blue && styles.blue,
@@ -38,6 +41,7 @@ const View = ({ blue, black, darkGrey, midGrey, lightGrey, white, flexColumn, fl
         darkGrey && styles.darkGrey,
         midGrey && styles.midGrey,
         lightGrey && styles.lightGrey,
+        red && styles.red,
         white && styles.white,
         flexColumn && styles.flexColumn,
         flexRow && styles.flexRow,

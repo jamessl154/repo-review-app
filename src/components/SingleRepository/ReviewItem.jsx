@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, title }) => {
 
     const formattedDate = format(new Date(review.createdAt), 'yyyy.MM.dd');
 
@@ -54,7 +54,7 @@ const ReviewItem = ({ review }) => {
             </View>
             <View style={styles.text} flexColumn>
                 <Text black style={styles.title}>
-                    {review.user.username}
+                    {title}
                 </Text>
                 <Text darkGrey style={styles.subText}>
                     {formattedDate}

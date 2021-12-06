@@ -28,7 +28,8 @@ const AppBar = () => {
           <AppBarTab tabText="Repositories" to="/" />
           {data && data.authorizedUser
             ? <>
-                <AppBarTab tabText="Create Review" to="/createReview"  />
+                <AppBarTab tabText="My Reviews" to="/my-reviews" />
+                <AppBarTab tabText="Create Review" to="/create-review" />
                 <AppBarTab tabText="Sign Out" to="/signout" />
               </>
             : <>
