@@ -33,7 +33,7 @@ export class RepositoryListContainer extends React.Component {
   };
 
   render() {
-    const { repositories } = this.props;
+    const { repositories, onEndReach } = this.props;
 
     const repositoryNodes = repositories
       ? repositories.edges.map(edge => edge.node)
@@ -46,6 +46,8 @@ export class RepositoryListContainer extends React.Component {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={this.renderHeader}
+        onEndReachedThreshold={0.01}
+        onEndReached={onEndReach}
       />
     );
   }
@@ -53,9 +55,17 @@ export class RepositoryListContainer extends React.Component {
 
 // Removed all side effects from the container for testing
 const RepositoryList = () => {
-  const { repositories, refetch } = useRepositories();
+  const { repositories, refetch, fetchMore } = useRepositories({ first: 2 });
 
-  return <RepositoryListContainer refetch={refetch} repositories={repositories} />;
+  const onEndReach = () => fetchMore();
+
+  return (
+    <RepositoryListContainer
+      refetch={refetch}
+      repositories={repositories}
+      onEndReach={onEndReach}
+    />
+  );
 };
 
 export default RepositoryList;

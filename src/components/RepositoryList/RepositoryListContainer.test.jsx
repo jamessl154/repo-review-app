@@ -49,8 +49,11 @@ describe('RepositoryList', () => {
             },
           ],
         };
+
+        const refetch = jest.fn();
+
         // https://github.com/zth/relay-modern-flow-jest-example/blob/42b44875365f33b6e25a8b6d0f3ea85166ef6cca/src/components/__tests__/App-tests.js#L25
-        const r = render(<RepositoryListContainer repositories={repositories} />);
+        const r = render(<RepositoryListContainer repositories={repositories} refetch={refetch} />);
 
         const repoItems = r.getAllByTestId('repoItem');
         expect(repoItems.length).toBe(2);
