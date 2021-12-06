@@ -15,7 +15,10 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const MyReviews = () => {
-    const { data, refetch } = useQuery(GET_USER, { variables: { includeReviews: true } });
+    const { data, refetch } = useQuery(GET_USER, {
+        variables: { includeReviews: true },
+        fetchPolicy: 'cache-and-network'
+    });
 
     if (data && data.authorizedUser) {
 

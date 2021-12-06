@@ -1,11 +1,13 @@
 import React from "react";
-import { StyleSheet, Pressable as NativePressable } from "react-native";
+import { StyleSheet, Pressable as NativePressable, Alert } from "react-native";
+import { useHistory } from "react-router-native";
 
 import Pressable from "../Pressable";
 import ReviewItem from "../SingleRepository/ReviewItem";
 import Text from "../Text";
 import View from "../View";
 import theme from "../../theme";
+import useDeleteReview from "../../hooks/useDeleteReview";
 
 const styles = StyleSheet.create({
     container: {
@@ -28,10 +30,28 @@ const styles = StyleSheet.create({
 });
 
 const ExpandedReview = ({ review, title, refetch }) => {
+    const [deleteReview] = useDeleteReview();
+    const history = useHistory();
 
-    const handleView = () => console.log("TODO1");
+    const handleView = () => history.push(`repos/${review.repository.id}`);
 
-    const handleDelete = () => console.log("TODO2");
+    const handleDelete = () => Alert.alert(
+        "Delete this Review?",
+        null,
+        [
+            {
+                text: "Yes",
+                onPress: () => {
+                    deleteReview(review.id);
+                    refetch();
+                }
+            },
+            {
+                text: "No",
+                onPress: () => null
+            }
+        ]
+    );
 
     return (
         <>

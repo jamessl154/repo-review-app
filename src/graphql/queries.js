@@ -72,6 +72,7 @@ export const GET_USER = gql`
                         ...reviewBaseFields
                         repository {
                             fullName
+                            id
                         }
                     }
                     cursor
