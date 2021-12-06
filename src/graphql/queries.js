@@ -35,14 +35,14 @@ export const GET_REPOSITORIES = gql`
 `;
 
 export const GET_SINGLE_REPO = gql`
-    query getSingleRepository($id: ID!) {
+    query getSingleRepository($id: ID!, $first: Int, $after: String) {
         repository(id: $id) {
             ...repositoryBaseFields
             url
             createdAt
             watchersCount
             openIssuesCount
-            reviews {
+            reviews(first: $first, after: $after) {
                 edges {
                     node {
                         id
@@ -54,6 +54,12 @@ export const GET_SINGLE_REPO = gql`
                             username
                         }
                     }
+                    cursor
+                }
+                pageInfo {
+                    endCursor
+                    startCursor
+                    hasNextPage
                 }
             }
         }

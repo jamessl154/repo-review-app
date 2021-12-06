@@ -46,6 +46,7 @@ export class RepositoryListContainer extends React.Component {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={this.renderHeader}
+        // low threshold to demonstrate infinite scrolling
         onEndReachedThreshold={0.01}
         onEndReached={onEndReach}
       />
@@ -55,6 +56,7 @@ export class RepositoryListContainer extends React.Component {
 
 // Removed all side effects from the container for testing
 const RepositoryList = () => {
+  // first is low to demonstrate infinite scrolling
   const { repositories, refetch, fetchMore } = useRepositories({ first: 2 });
 
   const onEndReach = () => fetchMore();

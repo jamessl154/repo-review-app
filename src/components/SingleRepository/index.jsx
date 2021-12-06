@@ -18,10 +18,26 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepository = () => {
     const { id } = useParams();
-    const { data } = useQuery(
+    // first is low to demonstrate infinite scrolling
+    const variables = { first: 2, id };
+
+    const { data, fetchMore, loading } = useQuery(
         GET_SINGLE_REPO,
-        { variables: { id }, fetchPolicy: 'cache-and-network' }
+        { variables, fetchPolicy: 'cache-and-network' }
     );
+
+    const onEndReached = () => {
+        const canFetchMore = !loading && data?.repository.reviews.pageInfo.hasNextPage;
+
+        if (canFetchMore) {
+            fetchMore({
+                variables: {
+                    ...variables,
+                    after: data.repository.reviews.pageInfo.endCursor
+                }
+            });
+        }
+    };
 
     if (data && data.repository) {
         const { repository } = data;
@@ -38,6 +54,9 @@ const SingleRepository = () => {
                 keyExtractor={({ id }) => id}
                 ItemSeparatorComponent={ItemSeparator}
                 ListHeaderComponent={() => <RepositoryHeader repository={repository} />}
+                onEndReached={onEndReached}
+                // low threshold to demonstrate infinite scrolling
+                onEndReachedThreshold={0.01}
             />
         );
     } else return null;
