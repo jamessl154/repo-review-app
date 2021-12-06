@@ -15,10 +15,25 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const MyReviews = () => {
-    const { data, refetch } = useQuery(GET_USER, {
-        variables: { includeReviews: true },
+    // low first parameter for testing
+    const variables = { includeReviews: true, first: 4 };
+    const { data, loading, refetch, fetchMore } = useQuery(GET_USER, {
+        variables,
         fetchPolicy: 'cache-and-network'
     });
+
+    const handleEndReached = () => {
+        const canFetchMore = !loading && data?.authorizedUser.reviews.pageInfo.hasNextPage;
+
+        if (canFetchMore) {
+            fetchMore({
+                variables: {
+                    ...variables,
+                    after: data.authorizedUser.reviews.pageInfo.endCursor,
+                },
+            });
+        }
+    };
 
     if (data && data.authorizedUser) {
 
@@ -39,6 +54,9 @@ const MyReviews = () => {
                         review={item}
                         title={item.repository.fullName}
                     />}
+                onEndReached={handleEndReached}
+                // low threshold for testing
+                onEndReachedThreshold={0.01}
             />
         );
 

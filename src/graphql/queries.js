@@ -61,12 +61,13 @@ export const GET_SINGLE_REPO = gql`
     ${REPOSITORY_BASE_FIELDS}
 `;
 
+// https://stackoverflow.com/a/69054303
 export const GET_USER = gql`
-    query getUser($includeReviews: Boolean = false) {
+    query getUser($includeReviews: Boolean = false, $first: Int, $after: String) {
         authorizedUser {
             id
             username
-            reviews @include(if: $includeReviews) {
+            reviews(first: $first, after: $after) @include(if: $includeReviews) {
                 edges {
                     node {
                         ...reviewBaseFields

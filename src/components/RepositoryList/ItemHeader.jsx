@@ -48,11 +48,13 @@ const ItemHeader = ({ ownerAvatarUrl, fullName, language, description }) => {
                 <Text style={styles.description} darkGrey testID="description" >
                     {description}
                 </Text>
-                <View black style={styles.language}>
-                    <Text white testID="language" >
-                        {language}
-                    </Text>
-                </View>
+                {language &&
+                    <View black style={styles.language}>
+                        <Text white testID="language" >
+                            {language}
+                        </Text>
+                    </View>
+                }
             </View>
         </View>
     );
